@@ -1,17 +1,17 @@
-const cors         = require('cors');
-const express      = require('express');
+const cors = require('cors');
+const express = require('express');
 const { conexion } = require('../database/connection');
-const app          = express();
+const app = express();
 
 class Server {
 
     constructor() {
-        this.app  = express();
+        this.app = express();
         this.port = 8080;
 
         // Conectamos con la base de datos
         this.conectarBD();
-   
+
         // Middlewares
         this.middlewares();
 
@@ -28,17 +28,17 @@ class Server {
 
     middlewares() {
         // CORS
-        this.app.use( cors() );
+        this.app.use(cors());
 
         // Lectura y parseo del body
-        this.app.use( express.json() );
+        this.app.use(express.json());
 
         // Directorio Público
-        this.app.use( express.static('public') );
+        this.app.use(express.static('public'));
     }
 
     listen() {
-        this.app.listen( this.port );
+        this.app.listen(this.port);
     }
 
 }
